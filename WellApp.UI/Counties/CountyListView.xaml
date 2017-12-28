@@ -78,7 +78,7 @@
     </UserControl.Resources>
 
 
-    <DockPanel Margin="7" LastChildFill="False">        
+    <DockPanel Margin="5" LastChildFill="False">        
         <ListBox ItemsSource="{Binding Counties}" Style="{DynamicResource CountyListBox}"  />        
     </DockPanel>
 </UserControl>
