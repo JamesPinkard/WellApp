@@ -2,16 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WellApp.UI.Counties"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:services="clr-namespace:WellApp.UI.Services"
-             xmlns:Domain="clr-namespace:WellApp.Domain;assembly=WellApp.Domain"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" x:Class="WellApp.UI.Counties.CountyListView"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="125">  
 
 
-    <UserControl.Resources>      
+    <UserControl.Resources>
+        <!--DataContext is set in Main Window-->
         
         <Style TargetType="{x:Type CheckBox}">
             <Setter Property="FontFamily" Value="Calibri" />
@@ -21,10 +20,8 @@
         <Style x:Key="CountyListBox" TargetType="{x:Type ListBox}">
             <Setter Property="ItemTemplate" Value="{DynamicResource ListItemTemplate}" />
             <!--<Setter Property="ItemContainerStyle" Value="{DynamicResource CountyListBoxItem}" />-->
-            <Setter Property="BorderBrush" Value="Transparent" />
-            <Setter Property="Width" Value="125"/>
-            <Setter Property="ScrollViewer.Visibility" Value="Visible"/>
-            <Setter Property="Margin" Value="1,0,1,0" />
+            <Setter Property="BorderBrush" Value="Transparent" />            
+            <Setter Property="ScrollViewer.Visibility" Value="Visible"/>            
             <Setter Property="SelectionMode" Value="Multiple"/>
         </Style>
 
@@ -59,8 +56,8 @@
             </Setter>
         </Style>
         
-        <DataTemplate x:Key="ListItemTemplate" DataType="{x:Type services:County}">
-            <VirtualizingStackPanel>
+        <DataTemplate x:Key="ListItemTemplate" DataType="{x:Type services:BindableItem}">
+            <StackPanel>
                 <CheckBox Content="{Binding Name}"
                           IsChecked="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsSelected}">                    
                     <i:Interaction.Triggers>
@@ -72,13 +69,13 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </CheckBox>
-            </VirtualizingStackPanel>
+            </StackPanel>
         </DataTemplate>       
         
     </UserControl.Resources>
 
 
-    <DockPanel Margin="5" LastChildFill="False">        
-        <ListBox ItemsSource="{Binding Counties}" Style="{DynamicResource CountyListBox}"  />        
-    </DockPanel>
+    <Grid>        
+        <ListBox ItemsSource="{Binding Counties}" Style="{DynamicResource CountyListBox}" Margin="6"  />        
+    </Grid>
 </UserControl>

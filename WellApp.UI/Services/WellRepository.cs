@@ -9,26 +9,13 @@ using WellApp.Data;
 
 namespace WellApp.UI.Services
 {
-    class WellRepository : IWellRepository
+    class WellRepository : IWellRepository, IGmaCollection
     {
         GroundwaterContext _context = new GroundwaterContext();
 
         public Task<List<Well>> GetWellsAsync()
         {
             return _context.Wells.ToListAsync();
-        }
-
-        public Task<List<County>> GetCountiesAsync()
-        {
-            var Counties = new List<County>();
-
-            var countyStrings = _context.Wells.Select(w => w.County)
-            .Distinct()
-            .OrderBy(c => c)
-            .Select(c => new County(c))
-            .ToListAsync();
-
-            return countyStrings;
         }
 
         public Task<Well> GetWellAsync(int id)
@@ -62,6 +49,30 @@ namespace WellApp.UI.Services
                 _context.Wells.Remove(well);
             }
             await _context.SaveChangesAsync();
+        }
+
+        public Task<List<BindableItem>> GetCountiesAsync()
+        {
+            var Counties = new List<BindableItem>();
+
+            var countyStrings = _context.Wells.Select(w => w.County)
+            .Distinct()
+            .OrderBy(c => c)
+            .Select(c => new BindableItem(c))
+            .ToListAsync();
+
+            return countyStrings;
+        }
+
+        public Task<List<BindableItem>> GetGmasAsync()
+        {
+            var gmaItems = _context.Wells.Select(w => w.GMA)
+            .Distinct()
+            .OrderBy(g => g)
+            .Select(g => new BindableItem(g.ToString()))
+            .ToListAsync();
+
+            return gmaItems;
         }
     }
 }

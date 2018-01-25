@@ -7,13 +7,21 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Class="WellApp.UI.Wells.WellListView"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-
+    
+    <!--DataContext is set in Main Window--> 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadWells"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <DataGrid ItemsSource="{Binding Wells}"
-              AutoGenerateColumns="True"/>
+    <DataGrid ItemsSource="{Binding Wells, IsAsync=True}"
+              VirtualizingPanel.IsVirtualizing="True"
+              EnableRowVirtualization="True"
+              EnableColumnVirtualization="True" MaxWidth="2560" MaxHeight="1600"  
+              VirtualizingStackPanel.VirtualizationMode="Recycling"
+              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+              AutoGenerateColumns="True"
+              Margin="6" 
+              CanUserAddRows="False"/>
 </UserControl>
