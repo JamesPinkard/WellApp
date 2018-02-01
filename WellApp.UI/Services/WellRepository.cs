@@ -9,13 +9,15 @@ using WellApp.Data;
 
 namespace WellApp.UI.Services
 {
-    class WellRepository : IWellRepository, IGmaCollection
+    class WellRepository : IWellRepository, IGmaCollection, IAquiferCollection
     {
         GroundwaterContext _context = new GroundwaterContext();
 
         public Task<List<Well>> GetWellsAsync()
         {
-            return _context.Wells.ToListAsync();
+            return _context.Wells
+                .Include(w => w.Aquifer)
+                .ToListAsync();
         }
 
         public Task<Well> GetWellAsync(int id)
@@ -53,8 +55,6 @@ namespace WellApp.UI.Services
 
         public Task<List<BindableItem>> GetCountiesAsync()
         {
-            var Counties = new List<BindableItem>();
-
             var countyStrings = _context.Wells.Select(w => w.County)
             .Distinct()
             .OrderBy(c => c)
@@ -73,6 +73,17 @@ namespace WellApp.UI.Services
             .ToListAsync();
 
             return gmaItems;
+        }
+
+        public Task<List<BindableItem>> GetAquifersAsync()
+        {           
+            var aquiferItems = _context.Wells.Select(w => w.Aquifer.AquiferName)
+                .Distinct()
+                .OrderBy(a => a)
+                .Select(a => new BindableItem(a))
+                .ToListAsync();
+
+            return aquiferItems;
         }
     }
 }

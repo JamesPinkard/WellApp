@@ -1,4 +1,4 @@
-﻿
+﻿using System.Collections.Generic;
 
 namespace WellApp.Domain
 {
@@ -8,5 +8,10 @@ namespace WellApp.Domain
         public string AquiferName { get; set; }
         public string AquiferCode { get; set; }
         public string AquiferCodeDescriprion { get; set; }
+
+        public override string ToString()
+        {
+            return AquiferName;
+        }
     }
 }

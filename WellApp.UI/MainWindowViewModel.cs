@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WellApp.UI.Counties;
 using WellApp.UI.Wells;
 using WellApp.UI.GMA;
+using WellApp.UI.Aquifers;
 using WellApp.UI.Services;
 using System.Collections.ObjectModel;
 using System.Threading;
@@ -16,6 +17,7 @@ namespace WellApp.UI
     class MainWindowViewModel : BindableBase
     {
         private GmaListViewModel _gmaListViewModel = new GmaListViewModel();
+        private AquiferListViewModel _aquiferListViewModel = new AquiferListViewModel();
         private CountyListViewModel _countyListViewModel = new CountyListViewModel();
         private WellListViewModel _wellListViewModel = new WellListViewModel();
 
@@ -27,6 +29,8 @@ namespace WellApp.UI
             _countyListViewModel.UncheckCountyRequested += FilterCounty;
             _gmaListViewModel.CheckGmaRequested += FilterGma;
             _gmaListViewModel.UncheckGmaRequested += FilterGma;
+            _aquiferListViewModel.CheckAquiferRequested += FilterAquifer;
+            _aquiferListViewModel.UncheckAquiferRequested += FilterAquifer;
             NavCommand = new RelayCommand<BindableItem>(OnNav);
             LoadDataCommand = new RelayCommand(OnLoadData);
             CurrentFilterViewModel = _countyListViewModel;
@@ -49,6 +53,11 @@ namespace WellApp.UI
         private void FilterGma(IEnumerable<string> gmas)
         {
             _wellListViewModel.FilterGmas(gmas);
+        }
+
+        private void FilterAquifer(IEnumerable<string> aquifers)
+        {
+            _wellListViewModel.FilterAquifer(aquifers);
         }
 
         public BindableBase CurrentFilterViewModel
@@ -77,6 +86,9 @@ namespace WellApp.UI
             {
                 case "GMA":
                     CurrentFilterViewModel = _gmaListViewModel;
+                    break;
+                case "Aquifer":
+                    CurrentFilterViewModel = _aquiferListViewModel;
                     break;
                 case "County":
                 default:

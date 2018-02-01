@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace WellApp.UI.Services
 {
-    interface IGmaCollection
+    interface IAquiferCollection
     {
-        Task<List<BindableItem>> GetGmasAsync();        
+        Task<List<BindableItem>> GetAquifersAsync();
     }
 }

@@ -125,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Aquifers\AquiferListView.xaml.cs">
+      <DependentUpon>AquiferListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Aquifers\AquiferListViewModel.cs" />
     <Compile Include="BindableBase.cs" />
     <Compile Include="GMA\GmaListView.xaml.cs">
       <DependentUpon>GmaListView.xaml</DependentUpon>
@@ -139,11 +143,16 @@
     </Compile>
     <Compile Include="Counties\CountyListViewModel.cs" />
     <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="Services\IAquiferCollection.cs" />
     <Compile Include="Services\IGmaCollection.cs" />
     <Compile Include="Wells\WellListView.xaml.cs">
       <DependentUpon>WellListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Wells\WellListViewModel.cs" />
+    <Page Include="Aquifers\AquiferListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Counties\CountyListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

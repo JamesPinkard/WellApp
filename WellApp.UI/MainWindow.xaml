@@ -7,6 +7,7 @@
         xmlns:county="clr-namespace:WellApp.UI.Counties"
         xmlns:well="clr-namespace:WellApp.UI.Wells"
         xmlns:gma="clr-namespace:WellApp.UI.GMA"
+        xmlns:aquifer="clr-namespace:WellApp.UI.Aquifers"
         xmlns:local="clr-namespace:WellApp.UI"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" x:Class="WellApp.UI.MainWindow"
         mc:Ignorable="d"
@@ -25,6 +26,9 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type gma:GmaListViewModel}">
             <gma:GmaListView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type aquifer:AquiferListViewModel}">
+            <aquifer:AquiferListView/>
         </DataTemplate>
 
         <Style x:Key="CriteriaListBox" TargetType="{x:Type ListBox}">

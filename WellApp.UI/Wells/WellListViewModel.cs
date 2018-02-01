@@ -68,5 +68,18 @@ namespace WellApp.UI.Wells
                 Wells = new ObservableCollection<Well>(_allWells.Where(w => gmas.Contains(Convert.ToString(w.GMA))));
             }
         }
+
+        internal void FilterAquifer(IEnumerable<string> aquifers)
+        {
+            if (aquifers.Count() == 0)
+            {
+                Wells = new ObservableCollection<Well>(_allWells);
+                return;
+            }
+            else
+            {
+                Wells = new ObservableCollection<Well>(_allWells.Where(w => aquifers.Contains(w.Aquifer.AquiferName)));
+            }
+        }
     }
 }

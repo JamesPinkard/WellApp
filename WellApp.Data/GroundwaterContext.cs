@@ -13,5 +13,12 @@ namespace WellApp.Data
             //optionsBuilder.UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = WellData; Trusted_Connection = True; ");
             optionsBuilder.UseSqlite(@"Data Source = C:\Users\jpinkard\Documents\Visual Studio 2017\Projects\WellApp\Database\TexasWells.sqlite3; ");
         }
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Well>()
+        //        .HasOne(w => w.Aquifer)
+        //        .WithMany(a => a.Wells);
+        //}
     }
 }
