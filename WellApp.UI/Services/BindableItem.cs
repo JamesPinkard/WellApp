@@ -9,6 +9,7 @@ namespace WellApp.UI.Services
     public class BindableItem : BindableBase
     {
         public string Name { get; set; }
+        public bool IsSelected { get; set; }
 
         public BindableItem(string name)
         {
