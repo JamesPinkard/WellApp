@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows.Data;
 
-namespace WellApp.UI.Wells
+namespace WellApp.UI.ViewModel
 {
     class WellListViewModel : BindableBase
     {
         private List<Well> _allWells = new List<Well>();
-        private IWellRepository _repository = new WellRepository();
+        private IWellRepository _repository;
 
         private ObservableCollection<Well> _wells;        
 
-        public WellListViewModel()
+        public WellListViewModel(IWellRepository wellRepository)
         {
-
+            _repository = wellRepository;
         }
 
         public ObservableCollection<Well> Wells

@@ -125,39 +125,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Aquifers\AquiferListView.xaml.cs">
+    <Compile Include="View\AquiferListView.xaml.cs">
       <DependentUpon>AquiferListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Aquifers\AquiferListViewModel.cs" />
+    <Compile Include="ViewModel\AquiferListViewModel.cs" />
     <Compile Include="BindableBase.cs" />
-    <Compile Include="GMA\GmaListView.xaml.cs">
+    <Compile Include="View\GmaListView.xaml.cs">
       <DependentUpon>GmaListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GMA\GmaListViewModel.cs" />
+    <Compile Include="ViewModel\GmaListViewModel.cs" />
     <Compile Include="LoadDataButtonView.xaml.cs">
       <DependentUpon>LoadDataButtonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\BindableItem.cs" />
-    <Compile Include="Counties\CountyListView.xaml.cs">
+    <Compile Include="View\CountyListView.xaml.cs">
       <DependentUpon>CountyListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Counties\CountyListViewModel.cs" />
-    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\CountyListViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Services\IAquiferCollection.cs" />
     <Compile Include="Services\IGmaCollection.cs" />
-    <Compile Include="Wells\WellListView.xaml.cs">
+    <Compile Include="View\WellListView.xaml.cs">
       <DependentUpon>WellListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Wells\WellListViewModel.cs" />
-    <Page Include="Aquifers\AquiferListView.xaml">
+    <Compile Include="ViewModel\WellListViewModel.cs" />
+    <Page Include="View\AquiferListView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Counties\CountyListView.xaml">
+    <Page Include="View\CountyListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GMA\GmaListView.xaml">
+    <Page Include="View\GmaListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,7 +165,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -173,7 +173,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -181,7 +181,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Wells\WellListView.xaml">
+    <Page Include="View\WellListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WellApp.UI.Services
 {
-    interface IGmaCollection
+    public interface IGmaCollection
     {
         Task<List<BindableItem>> GetGmasAsync();        
     }

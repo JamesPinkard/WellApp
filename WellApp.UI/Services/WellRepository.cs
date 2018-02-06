@@ -9,9 +9,14 @@ using WellApp.Data;
 
 namespace WellApp.UI.Services
 {
-    class WellRepository : IWellRepository, IGmaCollection, IAquiferCollection
+    public class WellRepository : IWellRepository, IGmaCollection, IAquiferCollection
     {
         GroundwaterContext _context = new GroundwaterContext();
+
+        public WellRepository(GroundwaterContext context)
+        {
+            _context = context;
+        }
 
         public Task<List<Well>> GetWellsAsync()
         {

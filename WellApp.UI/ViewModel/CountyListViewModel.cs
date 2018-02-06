@@ -8,19 +8,20 @@ using System.Threading.Tasks;
 using WellApp.Domain;
 using WellApp.UI.Services;
 
-namespace WellApp.UI.Counties
+namespace WellApp.UI.ViewModel
 {
-    class CountyListViewModel: BindableBase
+    public class CountyListViewModel: BindableBase
     {
         private ObservableCollection<BindableItem> _counties;
-        private IWellRepository _repository = new WellRepository();
+        private IWellRepository _repository;
         private List<string> _selectedCounties = new List<string>();
 
-        public CountyListViewModel()
+        public CountyListViewModel(IWellRepository wellRepository)
         {
             if (DesignerProperties.GetIsInDesignMode(
                 new System.Windows.DependencyObject())) return;
 
+            _repository = wellRepository;
             _counties = new ObservableCollection<BindableItem>(_repository.GetCountiesAsync().Result);
             CheckCountyCommand = new RelayCommand<BindableItem>(OnCheckCounty);
             UncheckCountyCommand = new RelayCommand<BindableItem>(OnUncheckCounty);

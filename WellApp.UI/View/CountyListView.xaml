@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:services="clr-namespace:WellApp.UI.Services"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" x:Class="WellApp.UI.Counties.CountyListView"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" x:Class="WellApp.UI.View.CountyListView"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="125">  
 

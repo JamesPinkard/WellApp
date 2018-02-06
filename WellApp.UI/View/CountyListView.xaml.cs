@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WellApp.UI.Wells
+namespace WellApp.UI.View
 {
     /// <summary>
-    /// Interaction logic for WellListView.xaml
+    /// Interaction logic for CountyListView.xaml
     /// </summary>
-    public partial class WellListView : UserControl
+    public partial class CountyListView : UserControl
     {
-        public WellListView()
+        public CountyListView()
         {
             InitializeComponent();
         }

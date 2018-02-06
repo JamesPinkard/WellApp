@@ -7,7 +7,7 @@ using WellApp.Domain;
 
 namespace WellApp.UI.Services
 {
-    interface IWellRepository
+    public interface IWellRepository
     {
         Task<List<Well>> GetWellsAsync();
         Task<List<BindableItem>> GetCountiesAsync();

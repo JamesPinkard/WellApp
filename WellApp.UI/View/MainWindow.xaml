@@ -4,31 +4,29 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:services="clr-namespace:WellApp.UI.Services"
-        xmlns:county="clr-namespace:WellApp.UI.Counties"
-        xmlns:well="clr-namespace:WellApp.UI.Wells"
-        xmlns:gma="clr-namespace:WellApp.UI.GMA"
-        xmlns:aquifer="clr-namespace:WellApp.UI.Aquifers"
+        xmlns:viewModel ="clr-namespace:WellApp.UI.ViewModel"
+        xmlns:view ="clr-namespace:WellApp.UI.View"
         xmlns:local="clr-namespace:WellApp.UI"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" x:Class="WellApp.UI.MainWindow"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" x:Class="WellApp.UI.View.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="1366">
 
     <Window.DataContext>
-        <local:MainWindowViewModel/>
+        <viewModel:MainWindowViewModel/>
     </Window.DataContext>
     
     <Window.Resources>
-        <DataTemplate DataType="{x:Type county:CountyListViewModel}">
-            <county:CountyListView/>
+        <DataTemplate DataType="{x:Type viewModel:CountyListViewModel}">
+            <view:CountyListView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type well:WellListViewModel}">
-            <well:WellListView/>
+        <DataTemplate DataType="{x:Type viewModel:WellListViewModel}">
+            <view:WellListView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type gma:GmaListViewModel}">
-            <gma:GmaListView/>
+        <DataTemplate DataType="{x:Type viewModel:GmaListViewModel}">
+            <view:GmaListView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type aquifer:AquiferListViewModel}">
-            <aquifer:AquiferListView/>
+        <DataTemplate DataType="{x:Type viewModel:AquiferListViewModel}">
+            <view:AquiferListView/>
         </DataTemplate>
 
         <Style x:Key="CriteriaListBox" TargetType="{x:Type ListBox}">

@@ -3,28 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WellApp.UI.Counties;
-using WellApp.UI.Wells;
-using WellApp.UI.GMA;
-using WellApp.UI.Aquifers;
+using WellApp.UI;
 using WellApp.UI.Services;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Windows.Threading;
+using WellApp.Data;
 
-namespace WellApp.UI
+namespace WellApp.UI.ViewModel
 {
     class MainWindowViewModel : BindableBase
     {
-        private GmaListViewModel _gmaListViewModel = new GmaListViewModel();
-        private AquiferListViewModel _aquiferListViewModel = new AquiferListViewModel();
-        private CountyListViewModel _countyListViewModel = new CountyListViewModel();
-        private WellListViewModel _wellListViewModel = new WellListViewModel();
+        private GmaListViewModel _gmaListViewModel;
+        private AquiferListViewModel _aquiferListViewModel;
+        private CountyListViewModel _countyListViewModel;
+        private WellListViewModel _wellListViewModel;
 
         private BindableBase _currentViewModel;
 
         public MainWindowViewModel()
         {
+            GroundwaterContext groundwaterContext = new GroundwaterContext();
+            WellRepository wellRepository = new WellRepository(groundwaterContext);
+            _gmaListViewModel = new GmaListViewModel(wellRepository);
+            _aquiferListViewModel = new AquiferListViewModel(wellRepository);
+            _countyListViewModel = new CountyListViewModel(wellRepository);
+            _wellListViewModel = new WellListViewModel(wellRepository);
             _countyListViewModel.CheckCountyRequested += FilterCounty;
             _countyListViewModel.UncheckCountyRequested += FilterCounty;
             _gmaListViewModel.CheckGmaRequested += FilterGma;

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WellApp.UI.Aquifers
+namespace WellApp.UI.View
 {
     /// <summary>
-    /// Interaction logic for GmaListView.xaml
+    /// Interaction logic for WellListView.xaml
     /// </summary>
-    public partial class AquiferListView : UserControl
+    public partial class WellListView : UserControl
     {
-        public AquiferListView()
+        public WellListView()
         {
             InitializeComponent();
         }

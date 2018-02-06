@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellApp.Domain", "WellApp.Domain\WellApp.Domain.csproj", "{5DFD557C-5F6A-4255-8788-413B42440973}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellApp.UI", "WellApp.UI\WellApp.UI.csproj", "{42CFFAA8-12BA-449D-9D2B-08B4861EEEE9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellApp.Repo.Text", "WellApp.Repo.Text\WellApp.Repo.Text.csproj", "{1A1C2E49-F370-4577-AAAB-C7C0DF36DE88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellApp.XUnit", "WellApp.XUnit\WellApp.XUnit.csproj", "{94620CD0-9255-4784-8EE5-DF74D0B168EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +35,15 @@ Global
 		{1A1C2E49-F370-4577-AAAB-C7C0DF36DE88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A1C2E49-F370-4577-AAAB-C7C0DF36DE88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A1C2E49-F370-4577-AAAB-C7C0DF36DE88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94620CD0-9255-4784-8EE5-DF74D0B168EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94620CD0-9255-4784-8EE5-DF74D0B168EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94620CD0-9255-4784-8EE5-DF74D0B168EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94620CD0-9255-4784-8EE5-DF74D0B168EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A239EA63-007E-4C52-A7D4-FD144054132B}
 	EndGlobalSection
 EndGlobal

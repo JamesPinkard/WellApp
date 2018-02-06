@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WellApp.UI.GMA
+namespace WellApp.UI.View
 {
     /// <summary>
     /// Interaction logic for GmaListView.xaml

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WellApp.UI.Services
 {
-    interface IAquiferCollection
+    public interface IAquiferCollection
     {
         Task<List<BindableItem>> GetAquifersAsync();
     }

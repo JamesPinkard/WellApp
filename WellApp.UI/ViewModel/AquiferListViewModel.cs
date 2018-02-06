@@ -7,19 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using WellApp.UI.Services;
 
-namespace WellApp.UI.Aquifers
+namespace WellApp.UI.ViewModel
 {
     class AquiferListViewModel : BindableBase
     {
         private ObservableCollection<BindableItem> _aquifers;
-        private IAquiferCollection _repository = new WellRepository();
+        private IAquiferCollection _repository;
         private List<string> _selectedAquifers = new List<string>();
 
-        public AquiferListViewModel()
+        public AquiferListViewModel(IAquiferCollection wellRepository)
         {
             if (DesignerProperties.GetIsInDesignMode(
                 new System.Windows.DependencyObject())) return;
 
+            _repository = wellRepository;
             _aquifers = new ObservableCollection<BindableItem>(_repository.GetAquifersAsync().Result);
             CheckAquiferCommand = new RelayCommand<BindableItem>(OnCheckAquifer);
             UncheckAquiferCommand = new RelayCommand<BindableItem>(OnUncheckAquifer);

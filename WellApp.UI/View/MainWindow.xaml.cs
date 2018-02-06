@@ -2,11 +2,13 @@
 using System.Windows;
 using System.Windows.Threading;
 using System.Threading;
+using WellApp.UI;
+using WellApp.UI.ViewModel;
 using WellApp.Data;
 using System.Collections.Generic;
 using WellApp.Repo.Text;
 
-namespace WellApp.UI
+namespace WellApp.UI.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -3,4 +3,4 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WellApp.UI"
              x:Class="WellApp.UI.App"
-             StartupUri="MainWindow.xaml"/>
+             StartupUri="view/MainWindow.xaml"/>
