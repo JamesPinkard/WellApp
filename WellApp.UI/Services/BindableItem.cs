@@ -15,6 +15,11 @@ namespace WellApp.UI.Services
         {
             Name = name;
         }
+
+        public BindableItem(object obj)
+        {
+            Name = obj.ToString();
+        }
         
     }
 }

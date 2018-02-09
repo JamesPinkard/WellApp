@@ -83,5 +83,28 @@ namespace WellApp.XUnit
 
             Assert.Contains<string>(expectedResult, result.Select(b => b.Name));
         }
+
+        [Fact]
+        public void GetAttributeValuesShouldReturnSevenCounties()
+        {
+            IAttributeTable<Well> wellRepository = new WellRepository(_context);
+
+            var result = wellRepository.GetAttributeValuesAsync(w => w.County).Result;
+
+            Assert.Equal(7, result.Count);
+        }
+
+        [Theory]
+        [InlineData("Glasscock")]
+        [InlineData("Travis")]
+        [InlineData("Nueces")]
+        public void GetAttributeValuesShouldReturnNamedBindableBase(string expectedResult)
+        {
+            IAttributeTable<Well> wellRepository = new WellRepository(_context);
+
+            var result = wellRepository.GetAttributeValuesAsync(w => w.County).Result;
+
+            Assert.Contains<string>(expectedResult, result.Select(b => b.Name));
+        }
     }
 }

@@ -13,18 +13,23 @@ namespace WellApp.UI.ViewModel
     public class CountyListViewModel: BindableBase
     {
         private ObservableCollection<BindableItem> _counties;
-        private IWellRepository _repository;
+        private IAttributeTable<Well> _repository;
         private List<string> _selectedCounties = new List<string>();
 
-        public CountyListViewModel(IWellRepository wellRepository)
+        public CountyListViewModel(IAttributeTable<Well> wellRepository)
         {
             if (DesignerProperties.GetIsInDesignMode(
                 new System.Windows.DependencyObject())) return;
 
             _repository = wellRepository;
-            _counties = new ObservableCollection<BindableItem>(_repository.GetCountiesAsync().Result);
             CheckCountyCommand = new RelayCommand<BindableItem>(OnCheckCounty);
             UncheckCountyCommand = new RelayCommand<BindableItem>(OnUncheckCounty);
+        }
+
+        public async void LoadEntities()
+        {
+            var _distinctCounties = await _repository.GetAttributeValuesAsync(w => w.County);
+            Counties = new ObservableCollection<BindableItem>(_distinctCounties);
         }
 
         public ObservableCollection<BindableItem> Counties
@@ -33,6 +38,7 @@ namespace WellApp.UI.ViewModel
             {
                 return _counties;
             }
+            private set { SetProperty(ref _counties, value); }
         }
 
         public RelayCommand<BindableItem> CheckCountyCommand { get; private set; }

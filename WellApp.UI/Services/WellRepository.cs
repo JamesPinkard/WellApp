@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WellApp.Domain;
 using WellApp.Data;
+using System.Linq.Expressions;
 
 namespace WellApp.UI.Services
 {
-    public class WellRepository : IWellRepository, IGmaCollection, IAquiferCollection
+    public class WellRepository : IWellRepository, IGmaCollection, IAquiferCollection, IAttributeTable<Well>
     {
         GroundwaterContext _context = new GroundwaterContext();
 
@@ -89,6 +90,17 @@ namespace WellApp.UI.Services
                 .ToListAsync();
 
             return aquiferItems;
+        }
+
+        public Task<List<BindableItem>> GetAttributeValuesAsync(Expression<Func<Well, string>> selector)
+        {
+            var countyStrings = _context.Wells.Select(selector)
+                .Distinct()
+                .OrderBy(c => c)
+                .Select(c => new BindableItem(c))
+                .ToListAsync();
+
+            return countyStrings;
         }
     }
 }

@@ -70,10 +70,10 @@ namespace WellApp.UI.ViewModel
             set { SetProperty(ref _currentViewModel, value); }
         }
 
-        public BindableBase CountyListViewModel
-        {
-            get { return _countyListViewModel; }            
-        }
+        ////public BindableBase CountyListViewModel
+        //{
+        //    get { return _countyListViewModel; }            
+        //}
 
         public BindableBase WellListViewModel
         {
@@ -98,7 +98,6 @@ namespace WellApp.UI.ViewModel
                 default:
                     CurrentFilterViewModel = _countyListViewModel;
                     break;
-
             }
         }        
 

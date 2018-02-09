@@ -10,53 +10,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
-        <!--DataContext is set in Main Window-->
-
-        <Style TargetType="{x:Type CheckBox}">
-            <Setter Property="FontFamily" Value="Calibri" />
-            <Setter Property="FontSize" Value="10pt" />
-        </Style>
-
-        <Style x:Key="CustomListBox" TargetType="{x:Type ListBox}">
-            <Setter Property="ItemTemplate" Value="{DynamicResource ListItemTemplate}" />
-            <Setter Property="ItemContainerStyle" Value="{DynamicResource CustomListBoxItem}" />
-            <Setter Property="BorderBrush" Value="Transparent" />
-            <Setter Property="ScrollViewer.Visibility" Value="Visible"/>
-            <Setter Property="SelectionMode" Value="Multiple"/>
-        </Style>
-
-        <Style x:Key="CustomListBoxItem" TargetType="{x:Type ListBoxItem}">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Margin" Value="1" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="IsSelected"  Value="{Binding IsSelected}"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Grid>
-                            <Rectangle x:Name="ListBG" Fill="{TemplateBinding Background}" RadiusX="5" RadiusY="5" Stroke="transparent" />
-                            <Rectangle x:Name="GelShine" Margin="2,2,2,0" VerticalAlignment="top" RadiusX="3" RadiusY="3" Opacity="0" Fill="#ccffffff" Stroke="transparent" Height="15px" />
-                            <ContentPresenter x:Name="ContentSite" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="15,5,5,5" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsSelected" Value="true" />
-                            <Trigger Property="IsFocused" Value="true">
-                                <Setter Property="Background" Value="sc#1.000000, 0.769689, 0.831936, 1.000000" />
-                                <Setter Property="FontWeight" Value="bold" />
-                                <Setter Property="Foreground" Value="black" />
-                                <Setter TargetName="ListBG" Property="Stroke" Value="sc#1.000000, 0.250141, 0.333404, 0.884413" />
-                                <Setter TargetName="GelShine" Property="Opacity" Value="1" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" Value="sc#1.000000, 0.769689, 0.831936, 1.000000" />
-                                <Setter Property="Foreground" Value="black" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
+        <!--DataContext is set in Main Window-->        
         <DataTemplate x:Key="ListItemTemplate" DataType="{x:Type services:BindableItem}">
             <StackPanel>
                 <CheckBox Content="{Binding Name}"
@@ -72,9 +26,7 @@
                 </CheckBox>
             </StackPanel>
         </DataTemplate>
-
     </UserControl.Resources>
-
 
     <Grid>
         <ListBox ItemsSource="{Binding Aquifers}" Style="{DynamicResource CustomListBox}" Margin="6"  />

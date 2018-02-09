@@ -14,6 +14,6 @@ namespace WellApp.UI.Services
         Task<Well> GetWellAsync(int id);
         Task<Well> AddWellAsync(Well well);
         Task<Well> UpdateWellAsync(Well well);
-        Task DeleteWellAsync(int wellId);
+        Task DeleteWellAsync(int wellId);        
     }
 }

@@ -125,6 +125,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Services\IAttributeTable.cs" />
     <Compile Include="View\AquiferListView.xaml.cs">
       <DependentUpon>AquiferListView.xaml</DependentUpon>
     </Compile>
@@ -149,6 +150,14 @@
       <DependentUpon>WellListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\WellListViewModel.cs" />
+    <Page Include="Styles\CheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ListBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AquiferListView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

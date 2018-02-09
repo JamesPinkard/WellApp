@@ -27,72 +27,8 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewModel:AquiferListViewModel}">
             <view:AquiferListView/>
-        </DataTemplate>
-
-        <Style x:Key="CriteriaListBox" TargetType="{x:Type ListBox}">
-            <Setter Property="ItemTemplate" Value="{DynamicResource ListItemTemplate}"/>
-            <Setter Property="ItemContainerStyle" Value="{DynamicResource CriteriaListBoxItem}" />
-            <Setter Property="BorderBrush" Value="Transparent" />
-            <Setter Property="Visibility" Value="Visible"/>
-            <Setter Property="Margin" Value="10,0,0,0" />
-            <Setter Property="SelectionMode" Value="Single"/>
-        </Style>
-
-        <Style x:Key="CriteriaListBoxItem" TargetType="{x:Type ListBoxItem}">
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-            <Setter Property="Background" Value="#ffffff"/>
-            <Setter Property="BorderBrush" Value="#cccccc"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Foreground" Value="#333333"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Padding"
-                    Value="1,3" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Border x:Name="Chrome"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                SnapsToDevicePixels="true">
-                            <ContentPresenter x:Name="Presenter" Margin="{TemplateBinding Padding}"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    RecognizesAccessKey="True"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Foreground" Value="#333333" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#dddddd" />
-                                <Setter Property="BorderBrush" Value="#cccccc" />
-                                <Setter Property="Foreground" Value="#333333" />
-                            </Trigger>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="#1ba1e2" />
-                                <Setter Property="BorderBrush" Value="#1ba1e2"/>
-                                <Setter Property="Foreground" Value="#ffffff"/>
-                            </Trigger>
-                            <Trigger Property="IsFocused" Value="true">
-                                <Setter TargetName="Chrome" Property="BorderBrush" Value="#1ba1e2" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <DataTemplate x:Key="ListItemTemplate" DataType="{x:Type services:BindableItem}">
-            <StackPanel>
-                <Label Content="{Binding Name}"/>
-            </StackPanel>
-        </DataTemplate>
-
+        </DataTemplate>        
     </Window.Resources>
-
 
     <Grid Margin="6">
         <Grid.ColumnDefinitions>
