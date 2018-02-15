@@ -13,11 +13,11 @@
     <!--DataContext is set in Main Window-->
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadEntities"/>
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadAttributes"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     
-    <UserControl.Resources>
+    <UserControl.Resources>        
         <DataTemplate x:Key="ListItemTemplate" DataType="{x:Type services:BindableItem}">
             <StackPanel>
                 <CheckBox Content="{Binding Name}"
@@ -32,8 +32,7 @@
                     </i:Interaction.Triggers>
                 </CheckBox>
             </StackPanel>
-        </DataTemplate>       
-        
+        </DataTemplate>               
     </UserControl.Resources>
 
 

@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 
 namespace WellApp.UI.Services
 {
-    public class WellRepository : IWellRepository, IGmaCollection, IAquiferCollection, IAttributeTable<Well>
+    public class WellRepository : IWellRepository, IAttributeTable<Well>
     {
         GroundwaterContext _context = new GroundwaterContext();
 
@@ -59,48 +59,15 @@ namespace WellApp.UI.Services
             await _context.SaveChangesAsync();
         }
 
-        public Task<List<BindableItem>> GetCountiesAsync()
+        public Task<List<BindableItem>> GetAttributeValuesAsync<TAttribute>(Expression<Func<Well, TAttribute>>selector) where TAttribute : IComparable<TAttribute>
         {
-            var countyStrings = _context.Wells.Select(w => w.County)
+            var attributes = _context.Wells.Select(selector)
             .Distinct()
             .OrderBy(c => c)
             .Select(c => new BindableItem(c))
             .ToListAsync();
 
-            return countyStrings;
-        }
-
-        public Task<List<BindableItem>> GetGmasAsync()
-        {
-            var gmaItems = _context.Wells.Select(w => w.GMA)
-            .Distinct()
-            .OrderBy(g => g)
-            .Select(g => new BindableItem(g.ToString()))
-            .ToListAsync();
-
-            return gmaItems;
-        }
-
-        public Task<List<BindableItem>> GetAquifersAsync()
-        {           
-            var aquiferItems = _context.Wells.Select(w => w.Aquifer.AquiferName)
-                .Distinct()
-                .OrderBy(a => a)
-                .Select(a => new BindableItem(a))
-                .ToListAsync();
-
-            return aquiferItems;
-        }
-
-        public Task<List<BindableItem>> GetAttributeValuesAsync(Expression<Func<Well, string>> selector)
-        {
-            var countyStrings = _context.Wells.Select(selector)
-                .Distinct()
-                .OrderBy(c => c)
-                .Select(c => new BindableItem(c))
-                .ToListAsync();
-
-            return countyStrings;
+            return attributes;
         }
     }
 }

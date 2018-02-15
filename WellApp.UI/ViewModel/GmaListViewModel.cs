@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WellApp.Domain;
 using WellApp.UI.Services;
 
 namespace WellApp.UI.ViewModel
@@ -12,18 +13,23 @@ namespace WellApp.UI.ViewModel
     class GmaListViewModel : BindableBase
     {
         private ObservableCollection<BindableItem> _gmas;
-        private IGmaCollection _repository;
+        private IAttributeTable<Well> _repository;
         private List<string> _selectedGmas = new List<string>();
 
-        public GmaListViewModel(IGmaCollection wellRepository)
+        public GmaListViewModel(IAttributeTable<Well> wellRepository)
         {
             if (DesignerProperties.GetIsInDesignMode(
                 new System.Windows.DependencyObject())) return;
 
-            _repository = wellRepository;
-            _gmas = new ObservableCollection<BindableItem>(_repository.GetGmasAsync().Result);
+            _repository = wellRepository;            
             CheckGmaCommand = new RelayCommand<BindableItem>(OnCheckGma);
             UncheckGmaCommand = new RelayCommand<BindableItem>(OnUncheckGma);
+        }
+
+        public async void LoadAttributes()
+        {
+            var _distinctAttributes = await _repository.GetAttributeValuesAsync(w => w.GMA);
+            Gmas = new ObservableCollection<BindableItem>(_distinctAttributes);
         }
 
         public ObservableCollection<BindableItem> Gmas
@@ -32,6 +38,7 @@ namespace WellApp.UI.ViewModel
             {
                 return _gmas;
             }
+            private set { SetProperty(ref _gmas, value); }
         }
 
         public RelayCommand<BindableItem> CheckGmaCommand { get; private set; }

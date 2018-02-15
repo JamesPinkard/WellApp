@@ -9,8 +9,7 @@ namespace WellApp.UI.Services
 {
     public interface IWellRepository
     {
-        Task<List<Well>> GetWellsAsync();
-        Task<List<BindableItem>> GetCountiesAsync();
+        Task<List<Well>> GetWellsAsync();        
         Task<Well> GetWellAsync(int id);
         Task<Well> AddWellAsync(Well well);
         Task<Well> UpdateWellAsync(Well well);

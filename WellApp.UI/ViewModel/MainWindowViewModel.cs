@@ -51,17 +51,17 @@ namespace WellApp.UI.ViewModel
 
         private void FilterCounty(IEnumerable<string> counties)
         {
-            _wellListViewModel.FilterCounties(counties);            
+            _wellListViewModel.FilterByAttribute(counties, w => counties.Contains(w.County));            
         }
 
         private void FilterGma(IEnumerable<string> gmas)
         {
-            _wellListViewModel.FilterGmas(gmas);
+            _wellListViewModel.FilterByAttribute(gmas, w => gmas.Contains(Convert.ToString(w.GMA)));
         }
 
         private void FilterAquifer(IEnumerable<string> aquifers)
         {
-            _wellListViewModel.FilterAquifer(aquifers);
+            _wellListViewModel.FilterByAttribute(aquifers, w => aquifers.Contains(w.Aquifer.AquiferName));
         }
 
         public BindableBase CurrentFilterViewModel
@@ -69,11 +69,6 @@ namespace WellApp.UI.ViewModel
             get { return _currentViewModel; }
             set { SetProperty(ref _currentViewModel, value); }
         }
-
-        ////public BindableBase CountyListViewModel
-        //{
-        //    get { return _countyListViewModel; }            
-        //}
 
         public BindableBase WellListViewModel
         {

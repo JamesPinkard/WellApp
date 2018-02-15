@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WellApp.Domain;
 using WellApp.UI.Services;
+using Prism.Events;
 
 namespace WellApp.UI.ViewModel
 {
@@ -14,7 +15,7 @@ namespace WellApp.UI.ViewModel
     {
         private ObservableCollection<BindableItem> _counties;
         private IAttributeTable<Well> _repository;
-        private List<string> _selectedCounties = new List<string>();
+        private List<string> _selectedCounties = new List<string>();        
 
         public CountyListViewModel(IAttributeTable<Well> wellRepository)
         {
@@ -26,7 +27,7 @@ namespace WellApp.UI.ViewModel
             UncheckCountyCommand = new RelayCommand<BindableItem>(OnUncheckCounty);
         }
 
-        public async void LoadEntities()
+        public async void LoadAttributes()
         {
             var _distinctCounties = await _repository.GetAttributeValuesAsync(w => w.County);
             Counties = new ObservableCollection<BindableItem>(_distinctCounties);

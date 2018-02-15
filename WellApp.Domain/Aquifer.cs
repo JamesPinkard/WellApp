@@ -2,7 +2,7 @@
 
 namespace WellApp.Domain
 {
-    public class Aquifer
+    public sealed class Aquifer
     {        
         public int AquiferID { get; set; }
         public string AquiferName { get; set; }

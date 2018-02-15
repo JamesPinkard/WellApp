@@ -35,50 +35,16 @@ namespace WellApp.UI.ViewModel
             Wells = new ObservableCollection<Well>(_allWells);          
         }
 
-        //public void FilterCounties(IEnumerable<string> counties)
-        //{
-        //    if (counties.Count() != 0)
-        //    {
-        //        WellCollectionView.Filter = (w) => { return (counties.Contains<string>(((Well)w).County)); };
-        //    }
-        //}
-
-        public void FilterCounties(IEnumerable<string> counties)
+        public void FilterByAttribute(IEnumerable<string> selectedAttributes, Func<Well,bool> predicate)
         {
-            if (counties.Count() == 0)
+            if (selectedAttributes.Count() == 0)
             {
                 Wells = new ObservableCollection<Well>(_allWells);
                 return;
             }
             else
             {
-                Wells = new ObservableCollection<Well>(_allWells.Where(w => counties.Contains(w.County)));
-            }
-        }
-
-        internal void FilterGmas(IEnumerable<string> gmas)
-        {
-            if (gmas.Count() == 0)
-            {
-                Wells = new ObservableCollection<Well>(_allWells);
-                return;
-            }
-            else
-            {
-                Wells = new ObservableCollection<Well>(_allWells.Where(w => gmas.Contains(Convert.ToString(w.GMA))));
-            }
-        }
-
-        internal void FilterAquifer(IEnumerable<string> aquifers)
-        {
-            if (aquifers.Count() == 0)
-            {
-                Wells = new ObservableCollection<Well>(_allWells);
-                return;
-            }
-            else
-            {
-                Wells = new ObservableCollection<Well>(_allWells.Where(w => aquifers.Contains(w.Aquifer.AquiferName)));
+                Wells = new ObservableCollection<Well>(_allWells.Where(predicate));
             }
         }
     }
