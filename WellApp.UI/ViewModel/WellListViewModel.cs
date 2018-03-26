@@ -31,8 +31,11 @@ namespace WellApp.UI.ViewModel
 
         public async void LoadWells()
         {
-            _allWells = await _repository.GetWellsAsync();
-            Wells = new ObservableCollection<Well>(_allWells);          
+            if (Wells == null)
+            {
+                _allWells = await _repository.GetWellsAsync();
+                Wells = new ObservableCollection<Well>(_allWells);          
+            }
         }
 
         public void FilterByAttribute(IEnumerable<string> selectedAttributes, Func<Well,bool> predicate)

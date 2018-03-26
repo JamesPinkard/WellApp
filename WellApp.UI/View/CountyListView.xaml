@@ -21,7 +21,8 @@
         <DataTemplate x:Key="ListItemTemplate" DataType="{x:Type services:BindableItem}">
             <StackPanel>
                 <CheckBox Content="{Binding Name}"
-                          IsChecked="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsSelected}">                  
+                          IsChecked="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsSelected}">
+                          
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Checked">
                             <i:InvokeCommandAction Command="{Binding DataContext.CheckCountyCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}"/>
@@ -32,7 +33,7 @@
                     </i:Interaction.Triggers>
                 </CheckBox>
             </StackPanel>
-        </DataTemplate>               
+        </DataTemplate>
     </UserControl.Resources>
 
 

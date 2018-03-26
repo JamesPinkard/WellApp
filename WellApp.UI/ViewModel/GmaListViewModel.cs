@@ -28,8 +28,11 @@ namespace WellApp.UI.ViewModel
 
         public async void LoadAttributes()
         {
-            var _distinctAttributes = await _repository.GetAttributeValuesAsync(w => w.GMA);
-            Gmas = new ObservableCollection<BindableItem>(_distinctAttributes);
+            if(Gmas == null)
+            {
+                var _distinctAttributes = await _repository.GetAttributeValuesAsync(w => w.GMA);
+                Gmas = new ObservableCollection<BindableItem>(_distinctAttributes);
+            }
         }
 
         public ObservableCollection<BindableItem> Gmas

@@ -29,8 +29,11 @@ namespace WellApp.UI.ViewModel
 
         public async void LoadAttributes()
         {
-            var _distinctCounties = await _repository.GetAttributeValuesAsync(w => w.County);
-            Counties = new ObservableCollection<BindableItem>(_distinctCounties);
+            if (Counties == null)
+            {
+                var _distinctCounties = await _repository.GetAttributeValuesAsync(w => w.County);
+                Counties = new ObservableCollection<BindableItem>(_distinctCounties);
+            }
         }
 
         public ObservableCollection<BindableItem> Counties
