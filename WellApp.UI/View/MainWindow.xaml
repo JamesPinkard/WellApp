@@ -31,38 +31,57 @@
     </Window.Resources>
 
     <Grid Margin="6">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Rectangle Fill="white" RadiusX="14" RadiusY="14" Grid.ColumnSpan="3"  Stroke="#FF0D3960" />
-        <Grid>
-            <ListBox x:Name="criteriaListBox" 
-                             ItemsSource="{Binding Criteria}"
-                             Style="{DynamicResource CriteriaListBox}" Margin="6">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction Command="{Binding NavCommand, Mode=OneWay}" CommandParameter="{Binding SelectedItem, ElementName=criteriaListBox}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </ListBox>
-        </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="Close" Command="{Binding CloseCommand}"/>
+                </MenuItem>
 
-        <Grid  Grid.Column="1">
-            <Rectangle Margin="6" Fill="sc#1.000000, 0.769689,  0.831936, 1.000000"                               
-                               Stroke="#FF0D3865"
-                               StrokeDashArray="2" />
-            <ContentControl x:Name="Filter_Window" 
-                                    Content="{Binding CurrentFilterViewModel}" />
-        </Grid>
-        <ContentControl Content="{Binding WellListViewModel}" Grid.Column="2" Margin="0" />
+                <MenuItem Header="_Export">
+                    <MenuItem Header="Export to CSV" Command="{Binding ExportToCsvCommand}"/>
+                    <MenuItem Header="Export to Shapefile"/>
+                </MenuItem>
 
-        <Grid Margin="6" Grid.ColumnSpan="3">
+            </Menu>
+        </DockPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Rectangle Fill="white" RadiusX="14" RadiusY="14" Grid.ColumnSpan="3"  Stroke="#FF0D3960" />
+            <Grid>
+                <ListBox x:Name="criteriaListBox" 
+                    ItemsSource="{Binding Criteria}"
+                    Style="{DynamicResource CriteriaListBox}" Margin="6">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding NavCommand, Mode=OneWay}" CommandParameter="{Binding SelectedItem, ElementName=criteriaListBox}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListBox>
+            </Grid>
+
+            <Grid  Grid.Column="1">
+                <Rectangle Margin="6" Fill="sc#1.000000, 0.769689,  0.831936, 1.000000"                               
+                    Stroke="#FF0D3865"
+                    StrokeDashArray="2" />
+                <ContentControl x:Name="Filter_Window" 
+                    Content="{Binding CurrentFilterViewModel}" />
+            </Grid>
+            <ContentControl Content="{Binding WellListViewModel}" Grid.Column="2" Margin="0" />
+
+            <!--<Grid Margin="6" Grid.ColumnSpan="3">
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid Margin="6"/>
+        </Grid>-->
         </Grid>
     </Grid>
 </Window>

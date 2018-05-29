@@ -40,6 +40,6 @@ namespace WellApp.UI.View
             var tempWindow = new ProgressBarWindow();
             tempWindow.Show();
             Dispatcher.Run();
-        }        
+        }
     }
 }

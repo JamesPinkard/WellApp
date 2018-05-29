@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using System.Windows.Threading;
 using WellApp.Data;
+using System.Windows.Input;
 
 namespace WellApp.UI.ViewModel
 {
@@ -35,9 +36,11 @@ namespace WellApp.UI.ViewModel
             _gmaListViewModel.UncheckGmaRequested += FilterGma;
             _aquiferListViewModel.CheckAquiferRequested += FilterAquifer;
             _aquiferListViewModel.UncheckAquiferRequested += FilterAquifer;
+            CloseCommand = new RelayCommand(OnClose);
             NavCommand = new RelayCommand<BindableItem>(OnNav);
             LoadDataCommand = new RelayCommand(OnLoadData);
             CurrentFilterViewModel = _countyListViewModel;
+            ExportToCsvCommand = new RelayCommand(ExportToCsv);
 
             Criteria = new ObservableCollection<BindableItem>
             {
@@ -76,7 +79,9 @@ namespace WellApp.UI.ViewModel
         }
 
         public RelayCommand<BindableItem> NavCommand { get; private set; }
+        public RelayCommand CloseCommand { get; private set; }
         public RelayCommand LoadDataCommand { get; private set; }
+        public RelayCommand ExportToCsvCommand { get; private set; }
 
         private void OnNav(BindableItem bindableItem)
         {
@@ -96,12 +101,23 @@ namespace WellApp.UI.ViewModel
             }
         }        
 
+        private void OnClose()
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+
         private void OnLoadData()
         {
             var newWindowThread = new Thread(ThreadStartingPoint);
             newWindowThread.SetApartmentState(ApartmentState.STA);
             newWindowThread.IsBackground = true;
             newWindowThread.Start();
+        }
+
+        private void ExportToCsv()
+        {
+            //TODO
+            System.Windows.MessageBox.Show("export to csv clicked");
         }
 
         private void ThreadStartingPoint()
