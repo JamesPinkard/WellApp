@@ -40,7 +40,7 @@ namespace WellApp.UI.ViewModel
             NavCommand = new RelayCommand<BindableItem>(OnNav);
             LoadDataCommand = new RelayCommand(OnLoadData);
             CurrentFilterViewModel = _countyListViewModel;
-            ExportToCsvCommand = new RelayCommand(ExportToCsv);
+            ExportToCsvCommand = new RelayCommand(OnExportToCsv);
 
             Criteria = new ObservableCollection<BindableItem>
             {
@@ -114,10 +114,12 @@ namespace WellApp.UI.ViewModel
             newWindowThread.Start();
         }
 
-        private void ExportToCsv()
+        private void OnExportToCsv()
         {
             //TODO
             System.Windows.MessageBox.Show("export to csv clicked");
+            var wells = _wellListViewModel.Wells;
+            CsvWriter.ToCsv<Domain.Well>("test.csv", ",", wells);            
         }
 
         private void ThreadStartingPoint()

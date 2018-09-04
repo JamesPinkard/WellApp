@@ -137,6 +137,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Services\CsvWriter.cs" />
     <Compile Include="Services\IAttributeTable.cs" />
     <Compile Include="View\AquiferListView.xaml.cs">
       <DependentUpon>AquiferListView.xaml</DependentUpon>
